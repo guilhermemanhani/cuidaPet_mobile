@@ -15,6 +15,7 @@ class AppWidget extends StatelessWidget {
         navigatorObservers: [
           asuka.asukaHeroController,
         ],
+        initialRoute: '/auth',
       ).modular(),
     );
   }
