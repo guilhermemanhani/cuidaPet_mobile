@@ -1,3 +1,7 @@
+import 'package:cuidapet_mobile/app/core/ui/cuidapet_icons.dart';
+import 'package:cuidapet_mobile/app/core/ui/extensions/size_screen_extension.dart';
+import 'package:cuidapet_mobile/app/core/ui/extensions/theme_extension.dart';
+import 'package:cuidapet_mobile/app/core/ui/widgets/rounded_button_with_icon.dart';
 import 'package:flutter/material.dart';
 
 class LoginRegisterButtons extends StatelessWidget {
@@ -10,20 +14,26 @@ class LoginRegisterButtons extends StatelessWidget {
       spacing: 16,
       runSpacing: 12,
       children: [
-        Container(
-          width: 163,
-          height: 40,
-          color: Colors.blue,
+        RoundedButtonWithIcon(
+          onTap: () {},
+          icon: CuidapetIcon.facebook,
+          title: 'Facebook',
+          color: const Color(0xFF4267B3),
+          width: .42.sw,
         ),
-        Container(
-          width: 163,
-          height: 40,
-          color: Colors.orange,
+        RoundedButtonWithIcon(
+          onTap: () {},
+          icon: CuidapetIcon.google,
+          title: 'Google',
+          color: const Color(0xFFE15031),
+          width: .42.sw,
         ),
-        Container(
-          width: 163,
-          height: 40,
-          color: Colors.green,
+        RoundedButtonWithIcon(
+          onTap: () => Navigator.pushNamed(context, '/auth/register'),
+          icon: Icons.email,
+          title: 'Cadastre-se',
+          color: context.primaryColorDark,
+          width: .42.sw,
         ),
       ],
     );

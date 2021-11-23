@@ -1,3 +1,5 @@
+import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_default_button.dart';
+import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -12,19 +14,31 @@ class LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextFormField(),
-        TextFormField(),
+        const SizedBox(
+          height: 24,
+        ),
+        CuidapetTextFormField(
+          label: 'Login',
+        ),
         const SizedBox(
           height: 20,
         ),
-        Container(
-          padding: const EdgeInsets.all(10),
-          width: double.infinity,
-          height: 58,
-          child: ElevatedButton(
-            onPressed: () {},
-            child: const Text('Entrar'),
-          ),
+        CuidapetTextFormField(
+          label: 'Senha',
+          obscureText: true,
+          // suffixIcon: IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(
+          //     Icons.lock_open,
+          //   ),
+          // ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        CuidapetDefaultButton(
+          label: 'Entrar',
+          onPressed: () {},
         ),
       ],
     );
