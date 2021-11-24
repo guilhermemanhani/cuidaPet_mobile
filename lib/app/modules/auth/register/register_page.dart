@@ -1,9 +1,6 @@
 import 'package:cuidapet_mobile/app/core/ui/extensions/size_screen_extension.dart';
-import 'package:cuidapet_mobile/app/core/ui/extensions/theme_extension.dart';
 import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_default_button.dart';
 import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_text_form_field.dart';
-import 'package:cuidapet_mobile/app/modules/auth/login/widget/login_form.dart';
-import 'package:cuidapet_mobile/app/modules/auth/login/widget/login_register_buttons.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -54,6 +51,9 @@ class _RegisterPageState extends State<RegisterPage> {
               CuidapetTextFormField(
                 label: 'Confirmar Senha',
                 obscureText: true,
+              ),
+              const SizedBox(
+                height: 12,
               ),
               CuidapetDefaultButton(
                 label: 'Cadastrar',
