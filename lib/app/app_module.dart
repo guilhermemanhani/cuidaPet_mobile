@@ -7,6 +7,7 @@ class AppModule extends Module {
   @override
   final List<Bind> binds = [];
 
+  @override
   List<Module> get imports => [
         CoreModule(),
       ];
