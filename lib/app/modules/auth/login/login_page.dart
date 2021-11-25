@@ -1,3 +1,4 @@
+import 'package:cuidapet_mobile/app/core/helpers/environments.dart';
 import 'package:cuidapet_mobile/app/core/ui/extensions/size_screen_extension.dart';
 import 'package:cuidapet_mobile/app/core/ui/extensions/theme_extension.dart';
 import 'package:cuidapet_mobile/app/modules/auth/login/widget/login_form.dart';
@@ -25,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(Environments.param('base_url') ?? 'Não configurado'),
               Image.asset(
                 'assets/images/logo.png',
                 width: 150.w,
