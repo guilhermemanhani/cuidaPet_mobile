@@ -1,0 +1,1 @@
+class UserNotfundException implements Exception {}
