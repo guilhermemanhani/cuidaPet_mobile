@@ -1,5 +1,7 @@
 import 'package:cuidapet_mobile/app/core/exceptions/failure.dart';
+import 'package:cuidapet_mobile/app/core/helpers/constants.dart';
 import 'package:cuidapet_mobile/app/core/helpers/logger.dart';
+import 'package:cuidapet_mobile/app/core/local_storages/local_storage.dart';
 import 'package:cuidapet_mobile/app/repositories/user/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import './user_service.dart';
@@ -7,11 +9,15 @@ import './user_service.dart';
 class UserServiceImpl implements UserService {
   final UserRepository _userRepository;
   final Logger _log;
-  UserServiceImpl({
-    required UserRepository userRepository,
-    required Logger log,
-  })  : _userRepository = userRepository,
-        _log = log;
+  final LocalStorage _localStorage;
+
+  UserServiceImpl(
+      {required UserRepository userRepository,
+      required Logger log,
+      required LocalStorage localStorage})
+      : _userRepository = userRepository,
+        _log = log,
+        _localStorage = localStorage;
   @override
   Future<void> register(String email, String password) async {
     try {
@@ -31,10 +37,14 @@ class UserServiceImpl implements UserService {
       _log.info('AccessToken: $accessToken');
       FirebaseAuth.instance
           .signInWithEmailAndPassword(email: login, password: password);
+      await _saveAccessToken(accessToken);
       _log.info('Login realizado com sucesso');
     } on FirebaseAuthException catch (e, s) {
       _log.error('Erro ao fazer login no Firebase Auth', e, s);
       throw Failure(message: 'Erro ao fazer login no Firebase');
     }
   }
+
+  Future<void> _saveAccessToken(String accessToken) =>
+      _localStorage.write<String>(Constants.ACCESS_TOKEN_KEY, accessToken);
 }

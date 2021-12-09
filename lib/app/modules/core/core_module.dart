@@ -27,7 +27,11 @@ class CoreModule extends Module {
         (i) => UserRepositoryImpl(restClient: i(), log: i()),
         export: true),
     Bind.lazySingleton<UserService>(
-        (i) => UserServiceImpl(userRepository: i(), log: i()),
+        (i) => UserServiceImpl(
+              userRepository: i(),
+              log: i(),
+              localStorage: i(),
+            ),
         export: true),
   ];
 }

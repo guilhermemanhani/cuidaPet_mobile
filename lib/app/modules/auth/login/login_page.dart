@@ -1,4 +1,5 @@
 import 'package:cuidapet_mobile/app/core/helpers/environments.dart';
+import 'package:cuidapet_mobile/app/core/push_notification/push_notification.dart';
 import 'package:cuidapet_mobile/app/core/ui/extensions/size_screen_extension.dart';
 import 'package:cuidapet_mobile/app/core/ui/extensions/theme_extension.dart';
 import 'package:cuidapet_mobile/app/modules/auth/login/widget/login_form.dart';
@@ -17,13 +18,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      // Loader.show();
-      // Future.delayed(Duration(seconds: 2), () => Loader.hide());
-      // Messages.alert('Mesagem de alerta');
-      // Future.delayed(
-      //     Duration(seconds: 2), () => Messages.info('message de info'));
-    });
+    PushNotification().getDeviceToken().then((token) => print(token));
+    // WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    // Loader.show();
+    // Future.delayed(Duration(seconds: 2), () => Loader.hide());
+    // Messages.alert('Mesagem de alerta');
+    // Future.delayed(
+    //     Duration(seconds: 2), () => Messages.info('message de info'));
+    // });
   }
 
   @override
